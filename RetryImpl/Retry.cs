@@ -29,6 +29,7 @@ namespace RetryImpl
                     if (i < retryCount)
                     {
                         shouldRetry = true;
+                        continue;
                     }
                     Console.WriteLine(e);
                     throw;
