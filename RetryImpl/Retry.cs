@@ -14,7 +14,7 @@ namespace RetryImpl
 
             bool shouldRetry = false;
 
-            for (int i = 0; i < retryCount; i++)
+            for (int i = 0; i <= retryCount; i++)
             {
                 if (shouldRetry)
                 {
@@ -29,10 +29,12 @@ namespace RetryImpl
                     if (i < retryCount)
                     {
                         shouldRetry = true;
-                        continue;
                     }
-                    Console.WriteLine(e);
-                    throw;
+                    else
+                    {
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
                 }
             }
         }
@@ -63,7 +65,7 @@ namespace RetryImpl
 
             bool shouldRetry = false;
 
-            for (int i = 0; i < retryCount; i++)
+            for (int i = 0; i <= retryCount; i++)
             {
                 if (shouldRetry) 
                     Thread.Sleep(TimeSpan.FromMilliseconds(waitTimeBeforeRetry(i-1)));

@@ -11,8 +11,19 @@ namespace RetryImpl
     {
         static void Main(string[] args)
         {
-            
+            for (int i = 0; i < 10; i++)
+            {
+                Retry.Execute<int>(DoSomething, i, (int y) => 1000, 1);
+            }
+        }
 
+        static void DoSomething(int i)
+        {
+            if (i%2 == 1)
+            {
+                throw new Exception("Odd Number Exception");
+            }
+            Console.WriteLine($"Output: {i}");
         }
     }
 }
